@@ -28,6 +28,12 @@
       <button type="submit" class="btn btn-primary">Sign in</button>
     </div>
   </div>
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <Datepicker input-class="form-control"/>
+    </div>
+  </div>
+
 </form>
   </div>
 </template>
