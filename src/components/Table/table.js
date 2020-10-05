@@ -5,7 +5,9 @@ export default {
   },
   data () {
     return {
-      userList: []
+      userList: [],
+      pageNumber: 0,
+      size: 10
     }
   },
   watch: {
@@ -14,8 +16,25 @@ export default {
     }
   },
   computed: {
+    isShowPagination () {
+      return this.userList.length > this.size
+    },
+    pageCount () {
+      return Math.ceil(this.userList.length / this.size)
+    },
+    paginatedData () {
+      const start = this.pageNumber * this.size
+      const end = start + this.size
+      return this.userList.slice(start, end)
+    }
   },
   methods: {
+    nextPage () {
+      this.pageNumber++
+    },
+    prevPage () {
+      this.pageNumber--
+    },
     sortByPayment (decrease = false) {
       if (decrease) {
         this.userList = this.userList.sort((d1, d2) => (d1.payment < d2.payment) ? 1 : -1)

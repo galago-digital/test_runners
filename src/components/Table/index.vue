@@ -24,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(user, index) in userList" :key="index">
+        <tr v-for="(user, index) in paginatedData" :key="index">
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.phone }}</td>
@@ -34,6 +34,10 @@
         </tr>
       </tbody>
     </table>
+    <div class="btn-group mr-2" v-if="isShowPagination">
+      <button type="button" class="btn btn-primary" @click="prevPage()" :disabled="pageNumber === 0">Previous</button>
+      <button type="button" class="btn btn-primary" @click="nextPage()" :disabled="pageNumber === pageCount - 1">Next</button>
+    </div>
   </div>
 </template>
 
